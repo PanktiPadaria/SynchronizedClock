@@ -1,0 +1,60 @@
+#digital-clock{
+	width:320px;
+	padding:40px;
+	position:relative;
+}
+#digital-clock .display{
+	text-align:center;
+	padding: 20px;
+	border-radius:6px;
+	position:relative;
+	height: 75px;
+}
+
+#digital-clock.light{
+	background-color:#f3f3f3;
+    color:#272e38;
+    border: 5px solid hsl(0, 0%, 40%);
+    padding: 5px;
+    background: hsl(0, 0%, 20%);
+    outline: 5px solid hsl(0, 0%, 60%);
+}
+
+#digital-clock.light:after{
+	box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+#digital-clock.light .display{
+	background-color:#dddddd;
+	box-shadow:0 1px 1px rgba(0,0,0,0.08) inset, 0 1px 1px #fafafa;
+}
+
+.footnote {
+	font-size: 12px; 
+	color:#ff5e5e; 
+	font-weight: bold;
+}
+
+/*Custom Material Styles*/
+
+#digital-clock {
+
+	.mat-form-field-wrapper {
+		padding-bottom: 0px;
+	}
+	
+	.mat-form-field-appearance-fill .mat-form-field-flex {
+		border-radius: 0px !important;
+	}
+	
+	.mat-form-field-underline {
+		display: none;
+	}
+	
+	.mat-select-arrow {
+		opacity: 0 !important;
+	}
+	
+	.mat-select-value {
+		text-align: center;
+	}
+}
