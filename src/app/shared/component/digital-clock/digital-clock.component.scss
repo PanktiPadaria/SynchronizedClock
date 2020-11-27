@@ -1,9 +1,9 @@
-#digital-clock{
+.digital-clock{
 	width:320px;
 	padding:40px;
 	position:relative;
 }
-#digital-clock .display{
+.digital-clock .display{
 	text-align:center;
 	padding: 20px;
 	border-radius:6px;
@@ -11,19 +11,20 @@
 	height: 75px;
 }
 
-#digital-clock.light{
+.digital-clock.light{
 	background-color:#f3f3f3;
     color:#272e38;
-    border: 5px solid hsl(0, 0%, 40%);
+    border: 5px solid#666666;
     padding: 5px;
-    background: hsl(0, 0%, 20%);
-    outline: 5px solid hsl(0, 0%, 60%);
+    background: #545271;
+    outline: 5px solid #999999;
 }
 
-#digital-clock.light:after{
+.digital-clock.light:after{
 	box-shadow:0 4px 10px rgba(0,0,0,0.15);
 }
-#digital-clock.light .display{
+
+.digital-clock.light .display{
 	background-color:#dddddd;
 	box-shadow:0 1px 1px rgba(0,0,0,0.08) inset, 0 1px 1px #fafafa;
 }
