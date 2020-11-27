@@ -38,11 +38,9 @@ describe('DigitalClockComponent', () => {
 
  it('should set the selected value in dropdown', async (done) => {
     const fixtureDebugElement = fixture.debugElement;
-    // open options dialog
     const matSelect = fixtureDebugElement.query(By.css('.mat-select-trigger')).nativeElement;
     matSelect.click();
     fixture.detectChanges();
-    // select the first option (use queryAll if you want to chose an option)
     const matOption = fixtureDebugElement.queryAll(By.css('.mat-option'));
     const hour = new Date().getHours();
     matOption[hour].nativeElement.click();
