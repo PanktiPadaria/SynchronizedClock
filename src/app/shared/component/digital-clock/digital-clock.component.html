@@ -1,0 +1,48 @@
+<div>
+    <div fxFlex="5"></div>
+    <div fxFlex="90">
+      <div id="digital-clock" class="light">
+        <div class="display clock-display" fxFlex="100">
+          <div fxFlex="32" fxLayout="column" fxLayoutAlign="space-evenly center">
+            <mat-label >Hour</mat-label>
+            <mat-select [(value)]="currentTime.hour" (selectionChange)="setNewTime($event, 'hour')">
+              <mat-option *ngFor="let item of hours; let i = index" [value]="item">{{ item | number:'2.0'}}
+              </mat-option>
+            </mat-select>
+          </div>
+          <div fxFlex="1" fxLayoutAlign="space-around center">
+            <div style="font-size:24px; padding-top:20px">
+              <span>:</span>
+            </div>
+          </div>
+          <div fxFlex="32">
+            <mat-label fxLayoutAlign="space-around center">Minutes</mat-label>
+            <mat-select [(value)]="currentTime.minute" (selectionChange)="setNewTime($event, 'minute')">
+              <mat-option *ngFor="let item of minutes; let i = index" [value]="item">{{ item | number:'2.0' }}
+              </mat-option>
+            </mat-select>
+          </div>
+          <div fxFlex="1" fxLayoutAlign="space-around center">
+            <div style="font-size: 24px; padding-top:20px">
+              <span>:</span>
+            </div>
+          </div>
+          <div fxFlex="32">
+            <mat-label fxLayoutAlign="space-around center">Seconds</mat-label>
+            <mat-select [(value)]="currentTime.second" (selectionChange)="setNewTime($event, 'second')">
+              <mat-option *ngFor="let item of seconds; let i = index" [value]="item">{{ item | number:'2.0'}}
+              </mat-option>
+            </mat-select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="5"></div>
+  </div>
+  <div style="margin-top:10px;">
+    <div fxFlex="7" fxFlex.xs="0"></div>
+    <div fxFlex="93" fxFlex.xs="100">
+      <span class="footnote" [innerHtml]="footNote">
+      </span>
+    </div>
+  </div>

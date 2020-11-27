@@ -1,0 +1,29 @@
+<div fxLayout="row">
+    <div fxFlex="20"></div>
+    <div fxflex="60">
+    <p> Set custom time for Analog Clock: </p>
+    </div>
+    <div fxFlex="20"></div>
+</div>
+<div fxLayout="row">
+    <div fxFlex="20"></div>
+    <mat-form-field appearance="fill" class="custom-mat-select" fxFlex="20">
+        <mat-label>Hours</mat-label>
+        <mat-select [(value)] = "selectedtHour" (selectionChange)="sendUpdatedTime('hour')" class="hour-dropdown">
+            <mat-option *ngFor="let item of hours; let i = index" [value]="item">{{ item | number:'2.0'}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="custom-mat-select" fxFlex="20">
+        <mat-label>Minutes</mat-label>
+        <mat-select [(value)] = "selectedMinute" (selectionChange)="sendUpdatedTime('minute')" id="minute">
+            <mat-option *ngFor="let item of minutes; let i = index" [value]="item">{{ item | number:'2.0' }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="custom-mat-select" fxFlex="20">
+        <mat-label>Seconds</mat-label>
+        <mat-select [(value)] = "selectedSecond" (selectionChange)="sendUpdatedTime('second')" id="second">
+            <mat-option *ngFor="let item of seconds; let i = index" [value]="item">{{ item | number:'2.0'}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div fxFlex="20"></div>
+</div>
