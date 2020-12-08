@@ -7,3 +7,5 @@
 [1126/185641.673:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [1126/190325.566:ERROR:file_io_win.cc(180)] CreateFile C:\Users\hardi\AppData\Local\Temp\karma-94062510\Crashpad\settings.dat: The process cannot access the file because it is being used by another process. (0x20)
 [1126/191614.861:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1207/225134.613:ERROR:file_io_win.cc(180)] CreateFile C:\Users\hardi\AppData\Local\Temp\karma-2184112\Crashpad\settings.dat: The process cannot access the file because it is being used by another process. (0x20)
+[1207/230134.623:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)

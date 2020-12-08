@@ -1,6 +1,7 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
+import { CustomTime } from 'src/app/models/custom-time';
 import { StandardTime } from 'src/app/models/standard-time';
 import { ClockService } from '../../services/clock/clock.service';
 
@@ -18,9 +19,12 @@ export class DigitalClockComponent implements OnInit, OnDestroy {
   minutes: Array<number>;
   seconds: Array<number>;
   footNote : string;
+  customTime: CustomTime;
+  @Output() onSetNewTime: EventEmitter<CustomTime> = new EventEmitter();
 
 
   constructor(private clockService: ClockService, private sanitization: DomSanitizer) {
+    this.customTime = new CustomTime();
     this.currentTime = new StandardTime();
     this.currentTime.hour = 0;
     this.currentTime.minute = 0;
@@ -29,10 +33,12 @@ export class DigitalClockComponent implements OnInit, OnDestroy {
     this.minutes = Array(60).fill(0).map((x,m) => m < 10 ? +"0" + m : m);
     this.seconds = Array(60).fill(0).map((x,s) => s < 10 ? +"0" + s : s);
     this.footNote = 'Click on HH, MM, SS to change the time of digital clock';
+    this.subscription = this.clockService.customSetTime.subscribe((currTime) => {
+      this.currentTime = currTime;
+    })
    }
 
   ngOnInit() {
-   this.startDigitalClock();
   }
 
   startDigitalClock() {
@@ -42,9 +48,9 @@ export class DigitalClockComponent implements OnInit, OnDestroy {
   }
 
   setNewTime(event: any, eventType: string){
-    this.subscription.unsubscribe();
-    this.clockService.setNewTime(event, 'digital', eventType);
-    this.startDigitalClock();
+    this.customTime.type = eventType;
+    this.customTime.value = event.value;
+    this.onSetNewTime.emit(this.customTime);
   }
 
   ngOnDestroy() {

@@ -5,12 +5,12 @@ import { MockComponent } from 'ng-mocks';
 import { CustomAnalogTimeInputComponent } from '../custom-analog-time-input/custom-analog-time-input.component';
 import { MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { By } from '@angular/platform-browser';
+import { By, DomSanitizer } from '@angular/platform-browser';
 
 describe('AnalogClockComponent', () => {
   let component: AnalogClockComponent;
   let fixture: ComponentFixture<AnalogClockComponent>;
-
+  let sanitization: DomSanitizer;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AnalogClockComponent, 
@@ -32,7 +32,12 @@ describe('AnalogClockComponent', () => {
   });
   it('should style hour hand with rotation animation', () => {
     fixture.detectChanges();
-    const hourHand = fixture.debugElement.query(By.css('.hour-hand'))
-    expect(hourHand.nativeElement.style.transform).toBe('');
+    const hourHand = fixture.debugElement.query(By.css('.hour-hand'));
+    const date = new Date();
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+    const second = date.getSeconds();
+    const rotation = `rotate(${(((hour) * 30) + (minute * 0.5) + (second * (0.5 / 60)) +90).toFixed(3)}deg)`;
+    expect(hourHand.nativeElement.style.transform).toBe(rotation);
   });
 });
